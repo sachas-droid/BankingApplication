@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -37,5 +38,43 @@ public List<Payment> getAllPayments() {
 paymentModuleRepository.findAll().forEach( payment -> {paymentList.add(new Payment(payment.getAccountId(),payment.getUserName(),payment.getPaymentAmount()));});
 return  paymentList;
 }
+
+//public Payment addPayment(Payment payment){
+//com.hexaware.bankmanagementsystem.entity.Payment paymentEntity =new com.hexaware.bankmanagementsystem.entity.Payment(payment.getAccountId(),payment.getUserName(),payment.getPaymentAmount());
+//paymentEntity.setAccount(accountService.getAccount(payment.getAccountId()));
+//paymentEntity.setUser(UserService.getUser(payment.getUserName()));
+//how to add payment amount?
+//com.hexaware.bankmanagementsystem.entity.Payment  savedPayment = paymentModuleRepository.save(paymentEntity);
+//retur new Payment(savedPayment.getAccountId(),savedPayment.getUserName(),savedPayment.getPaymentAmount());
+//}
+
+public Payment getPayment(Integer index) {return paymentList.get(index);}
+public Payment updatePayment(Integer index, Payment payment){
+paymentList.set(index,payment);
+return payment;
+    }
+public void runQuery(String query){
+jdbcTemplate.update(query);
+}
+
+public Payment getPaymentById(Integer id){
+    Optional<com.hexaware.bankmanagementsystem.entity.Payment> optionalPayment =paymentModuleRepository.findById(id);
+if(optionalPayment.isPresent()){
+return new Payment(optionalPayment.get().getAccountId(), optionalPayment.get().getUserName(), optionalPayment.get().getPaymentAmount());
+}
+return null;
+}
+
+public Payment updatePaymentById(Integer id, Payment payment){
+Optional<com.hexaware.bankmanagementsystem.entity.Payment> optionalPayment = paymentModuleRepository.findById(id);
+if(optionalPayment.isPresent()){
+com.hexaware.bankmanagementsystem.entity.Payment paymentEntity = optionalPayment.get();
+paymentEntity.setPaymentAmount(payment.getPaymentAmount());
+paymentModuleRepository.save(paymentEntity);
+}
+return new Payment(id,payment.getUserName(),payment.getPaymentAmount());
+}
+
+public void deletePaymentById(int id){paymentModuleRepository.deleteById(id);}
 
 }
