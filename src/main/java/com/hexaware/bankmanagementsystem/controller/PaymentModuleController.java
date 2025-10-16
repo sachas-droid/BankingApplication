@@ -18,6 +18,7 @@ public class PaymentModuleController {
 //@GetMapping
 //public List<Payment> getPayments() {
 //return paymentModuleService.getAllPayments();
+//
 //}
 private final PaymentModuleService paymentModuleService;
 
@@ -35,19 +36,19 @@ return new ResponseEntity<>(paymentModuleService.getAllPayments(), HttpStatus.OK
 //return new ResponseEntity<>(paymentModuleService.addPayment(payment),HttpStatus.OK);
 //    }
 
-@GetMapping("/{index}")
-public ResponseEntity<Payment> getPayment(@PathVariable("index") Integer index){
+@GetMapping("/{id}")
+public ResponseEntity<Payment> getPayment(@PathVariable("id") Integer index){
     return new ResponseEntity<>(paymentModuleService.getPayment(index),HttpStatus.OK);
 }
 
-@PutMapping("/{index}")
-public ResponseEntity<Payment> updatePaymentById(@PathVariable("index") Integer index,@RequestBody Payment payment){
+@PutMapping("/{id}")
+public ResponseEntity<Payment> updatePaymentById(@PathVariable("id") Integer index,@RequestBody Payment payment){
     return new ResponseEntity<>(paymentModuleService.updatePaymentById(index,payment),HttpStatus.OK);
     }
 
-@DeleteMapping("/{index}")
-    public ResponseEntity<Void> deletePaymentById(@PathVariable("index") int index){
-        paymentModuleService.deletePaymentById(index);
+@DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePaymentById(@PathVariable("id") int id){
+        paymentModuleService.deletePaymentById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

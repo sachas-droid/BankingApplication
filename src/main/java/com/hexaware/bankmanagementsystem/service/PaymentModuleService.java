@@ -27,12 +27,12 @@ private PaymentModuleRepository paymentModuleRepository;
 Logger logger = LoggerFactory.getLogger(PaymentModuleService.class);
 
 static List<Payment> paymentList = new ArrayList<>();
-static {
-paymentList.add(new Payment(1,"sayan",100));
-    paymentList.add(new Payment(2,"sayan2",200));
-    paymentList.add(new Payment(3,"sayan3",300));
-
-}
+//static {
+//paymentList.add(new Payment(1,"sayan",100));
+//    paymentList.add(new Payment(2,"sayan2",200));
+//    paymentList.add(new Payment(3,"sayan3",300));
+//
+//}
 public List<Payment> getAllPayments() {
     List<Payment> paymentList = new ArrayList<>();
 paymentModuleRepository.findAll().forEach( payment -> {paymentList.add(new Payment(payment.getAccountId(),payment.getUserName(),payment.getPaymentAmount()));});
@@ -48,7 +48,7 @@ return  paymentList;
 //retur new Payment(savedPayment.getAccountId(),savedPayment.getUserName(),savedPayment.getPaymentAmount());
 //}
 
-public Payment getPayment(Integer index) {return paymentList.get(index);}
+public Payment getPayment(Integer id) {return paymentList.get(id);}
 public Payment updatePayment(Integer index, Payment payment){
 paymentList.set(index,payment);
 return payment;
