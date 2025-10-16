@@ -1,5 +1,6 @@
 package com.hexaware.bankmanagementsystem.service;
 
+
 import com.hexaware.bankmanagementsystem.model.User;
 import com.hexaware.bankmanagementsystem.repository.UserRepository;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ public class UserService {
         List<User> userList = new ArrayList<>();
         userRepository.findAll().forEach(user -> {userList.add(new User(user.getUserId(),user.getUserName(),user.getUserAddress(),user.getUserPhoneNumber()));});
         return userList;
+
     }
 
     public User addUser(User user) {
