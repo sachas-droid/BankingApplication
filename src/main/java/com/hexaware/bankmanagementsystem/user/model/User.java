@@ -1,4 +1,4 @@
-package com.hexaware.bankmanagementsystem.model;
+package com.hexaware.bankmanagementsystem.user.model;
 
 public class User {
     private Integer userId;
@@ -47,7 +47,7 @@ public class User {
 
     }
 
-    public User(com.hexaware.bankmanagementsystem.entity.User user) {
+    public User(com.hexaware.bankmanagementsystem.user.entity.User user) {
         this.userId = user.getUserId();
         this.userName = user.getUserName();
         this.userAddress = user.getUserAddress();

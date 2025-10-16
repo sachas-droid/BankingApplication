@@ -1,11 +1,9 @@
-package com.hexaware.bankmanagementsystem.entity;
+package com.hexaware.bankmanagementsystem.user.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-import java.util.List;
 
 @Entity
 @Table(name = "user")

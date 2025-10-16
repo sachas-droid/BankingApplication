@@ -1,7 +1,7 @@
 
-package com.hexaware.bankmanagementsystem.repository;
+package com.hexaware.bankmanagementsystem.user.repository;
 
-import com.hexaware.bankmanagementsystem.entity.User;
+import com.hexaware.bankmanagementsystem.user.entity.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
