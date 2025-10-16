@@ -1,6 +1,5 @@
 package com.hexaware.bankmanagementsystem.service;
 
-import com.hexaware.bankmanagementsystem.dao.UserDao;
 import com.hexaware.bankmanagementsystem.model.User;
 import com.hexaware.bankmanagementsystem.repository.UserRepository;
 import org.slf4j.Logger;
@@ -16,16 +15,15 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-    @Autowired
-    private UserDao userDao;
+
 
     @Autowired
     private UserRepository userRepository;
 
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        List<User> userList = new ArrayList<>();
+        userRepository.findAll().forEach(user -> {userList.add(new User(user.getUserId(),user.getUserName(),user.getUserAddress(),user.getUserPhoneNumber()));});
+        return userList;
     }
 
     public User addUser(User user) {
