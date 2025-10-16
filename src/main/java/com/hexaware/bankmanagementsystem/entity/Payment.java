@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Entity
 @Table(name = "payment")
@@ -16,6 +17,7 @@ private Integer accountId;
 private String userName;
 private Integer paymentAmount;
 
+//    private List<Payment> payments;
     public Integer getAccountId() {
         return accountId;
     }
@@ -40,11 +42,13 @@ private Integer paymentAmount;
         this.paymentAmount = paymentAmount;
     }
 
+    public Payment() {
+    }
     public Payment(Integer accountId, String userName, Integer paymentAmount) {
         this.accountId = accountId;
         this.userName = userName;
         this.paymentAmount = paymentAmount;
     }
 
-    //    public List<Payment> getAllPayments(){ return payments; }
+//        public List<Payment> getAllPayments(){ return payments; }
 }

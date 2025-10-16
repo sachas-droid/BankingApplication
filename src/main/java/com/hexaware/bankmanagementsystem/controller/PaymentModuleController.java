@@ -14,32 +14,29 @@ import java.util.List;
 public class PaymentModuleController {
 //@Autowired
 //private PaymentModuleService paymentModuleService;
-//
-//@GetMapping
-//public List<Payment> getPayments() {
-//return paymentModuleService.getAllPayments();
-//
-//}
-private final PaymentModuleService paymentModuleService;
-
+//    @GetMapping
+//    public List<Payment> getAllPayments(){
+//        return paymentModuleService.getAllPayments();
+//    }
+    private final PaymentModuleService paymentModuleService;
 public PaymentModuleController(PaymentModuleService paymentModuleService){
-    this.paymentModuleService = paymentModuleService;
+    this.paymentModuleService =paymentModuleService;
 }
-
 @GetMapping
     public ResponseEntity<List<Payment>> getAllPayments(){
 return new ResponseEntity<>(paymentModuleService.getAllPayments(), HttpStatus.OK);
 }
+
 
 //@PostMapping
 //public ResponseEntity<Payment> addPayment(@RequestBody Payment payment){
 //return new ResponseEntity<>(paymentModuleService.addPayment(payment),HttpStatus.OK);
 //    }
 
-@GetMapping("/{id}")
-public ResponseEntity<Payment> getPayment(@PathVariable("id") Integer index){
-    return new ResponseEntity<>(paymentModuleService.getPayment(index),HttpStatus.OK);
-}
+//@GetMapping("/{id}")
+//public ResponseEntity<Payment> getPayment(@PathVariable("id") Integer index){
+//    return new ResponseEntity<>(paymentModuleService.getPayment(index),HttpStatus.OK);
+//}
 
 @PutMapping("/{id}")
 public ResponseEntity<Payment> updatePaymentById(@PathVariable("id") Integer index,@RequestBody Payment payment){
