@@ -2,10 +2,12 @@ package com.hexaware.bankmanagementsystem.account.controller;
 
 import com.hexaware.bankmanagementsystem.account.Service.AccountService;
 import com.hexaware.bankmanagementsystem.account.entity.Account;
+import com.hexaware.bankmanagementsystem.account.model.AccountModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
+@RequestMapping("/api/v1/accounts")
 public class AccountController {
     private final AccountService accountService;
 
@@ -13,13 +15,13 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    // GET /api/v1/accounts?userId=123
+    // GET /api/v1/accounts?
     @GetMapping
     public List<Account> getAccounts(@RequestParam Long userId) {
         return accountService.getAccountsByUser(userId);
     }
 
-    // GET /api/v1/accounts/{accountNumber}
+    // GET /api/v1/accounts/{accountNumber} account details
     @GetMapping("/{accountNumber}")
     public Account getAccount(@PathVariable String accountNumber) {
         return accountService.getAccountByNumber(accountNumber);
@@ -27,8 +29,8 @@ public class AccountController {
 
     // POST /api/v1/accounts
     @PostMapping
-    public Account createAccount(@RequestBody Account account) {
-        return accountService.createAccount(account);
+    public Account createAccount(@RequestBody AccountModel accountModel) {
+        return accountService.createAccount(accountModel);
     }
 
     // PUT /api/v1/accounts/{accountNumber}/primary

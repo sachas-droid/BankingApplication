@@ -1,7 +1,12 @@
 package com.hexaware.bankmanagementsystem.account.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "accounts")
 public class Account {
@@ -11,22 +16,12 @@ public class Account {
 
     @Column(unique = true, nullable = false)
     private String accountNumber;
-
+    @Column(nullable = false)
     private String accountType;
     private double balance;
+    @Column(unique = true, nullable = false)
     private boolean primaryAccount;
+    @Column(unique = true, nullable = false)
     private Long userId;
 
-    // Constructors
-    public Account() {}
-
-    public Account(String accountNumber, String accountType, double balance, boolean primaryAccount, Long userId) {
-
-    }
-
-    public void setPrimaryAccount(boolean b) {
-    }
-
-    // Getters and Setters
-    // (Generate using your IDE)
 }
