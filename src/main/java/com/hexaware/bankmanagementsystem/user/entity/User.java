@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "`user`")
 public class User {
     @Column
     @Id
@@ -46,7 +46,9 @@ public class User {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+    public User() {
 
+    }
     public User(Integer userId, String userName, String userAddress, String userPhoneNumber) {
         this.userId = userId;
         this.userName = userName;

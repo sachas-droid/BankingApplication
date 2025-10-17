@@ -38,7 +38,9 @@ public class User {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+    public User() {
 
+    }
     public User(Integer userId, String userName, String userAddress, String userPhoneNumber) {
         this.userId = userId;
         this.userName = userName;
