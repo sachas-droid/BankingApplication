@@ -1,47 +1,68 @@
 package com.hexaware.beneficiary.controller;
 
-import com.hexaware.beneficiary.entity.Beneficiary;
+import com.hexaware.beneficiary.model.Beneficiary;
 import com.hexaware.beneficiary.service.BeneficiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
-
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/beneficiaries")
+@RequestMapping("/api/v1/accounts/beneficiaries")
 public class BeneficiaryController {
+
     @Autowired
-    private BeneficiaryService service;
+    private BeneficiaryService beneficiaryService;
+
+    // GET all beneficiaries
     @GetMapping
-    public List<Beneficiary> getAll() {
-        List<Beneficiary> entities = service.findAll();
-        return entities.stream()
-                .map(this::convertToModel)
-                .toList(); // Java 16+, use .collect(Collectors.toList()) if on Java 8
+    public ResponseEntity<List<Beneficiary>> getAll() {
+        return ResponseEntity.ok(beneficiaryService.getAll());
     }
+
+    // GET beneficiary by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getById(@PathVariable Long id) {
+        Optional<Beneficiary> beneficiary = beneficiaryService.getById(id);
+
+        return beneficiary.<ResponseEntity<Object>>map(b -> ResponseEntity.ok(b))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Map.of("error", "Beneficiary not found")));
+    }
+
+    // POST create new beneficiary
     @PostMapping
-    public Beneficiary create(@RequestBody Beneficiary model) {
-        Beneficiary entity = convertToEntity(model);
-        Beneficiary saved = service.save(entity);
-        return convertToModel(saved);
+    public ResponseEntity<Beneficiary> create(@RequestBody Beneficiary model) {
+        Beneficiary created = beneficiaryService.create(model);
+        return ResponseEntity.ok(created);
     }
-    private Beneficiary convertToEntity(Beneficiary model) {
-        Beneficiary entity = new Beneficiary();
-        entity.setId(Long.valueOf(model.getId())); // Make sure both use Long!
-        entity.setName(model.getName());
-        entity.setAccountNumber(model.getAccountNumber());
-        entity.setBankName(model.getBankName());
-        entity.setIfscCode(model.getIfscCode());
-        return entity;
+
+    // PUT - Update Beneficiary
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody Beneficiary model) {
+        Optional<Beneficiary> updated = beneficiaryService.update(id, model);
+
+        if (updated.isPresent()) {
+            return ResponseEntity.ok(updated.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("error", "Beneficiary not found"));
+        }
     }
-    private Beneficiary convertToModel(Beneficiary entity) {
-        Beneficiary model = new Beneficiary();
-        model.setId(Long.valueOf(entity.getId()));
-        model.setName(entity.getName());
-        model.setAccountNumber(entity.getAccountNumber());
-        model.setBankName(entity.getBankName());
-        model.setIfscCode(entity.getIfscCode());
-        return model;
+
+    // DELETE - Remove Beneficiary
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
+        Optional<Beneficiary> existing = beneficiaryService.getById(id);
+        if (existing.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("error", "Beneficiary not found"));
+        }
+        beneficiaryService.delete(id);
+        return ResponseEntity.noContent().build(); // 204 No Content
     }
 }

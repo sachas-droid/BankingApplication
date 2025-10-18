@@ -6,11 +6,11 @@ This module handles the **CRUD operations** for banking beneficiaries as part of
 
 ## Features
 
-- Add a new beneficiary
+- Add a new beneficiaryModel
 - View all beneficiaries
-- View a beneficiary by ID
-- Update beneficiary details
-- Delete a beneficiary
+- View a beneficiaryModel by ID
+- Update beneficiaryModel details
+- Delete a beneficiaryModel
 
 ## Tech Stack
 - Java 17+
@@ -19,3 +19,13 @@ This module handles the **CRUD operations** for banking beneficiaries as part of
 - Spring Data JPA
 - H2 Database (in-memory for development)
 - Maven
+
+
+Method  Endpoint                             Description
+GET     api/v1/accounts/beneficiaries        Get list of beneficiaries
+GET     api/v1/accounts/beneficiaries/{id}   Get a single beneficiary by ID
+POST    api/v1/accounts/beneficiaries        Create a new beneficiary
+PUT     api/v1/accounts/beneficiaries/{id}   Update a beneficiary by ID
+DELETE  api/v1/accounts/beneficiaries/{id}   Delete a beneficiary by ID
+
+
