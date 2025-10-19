@@ -1,6 +1,7 @@
 package com.hexaware.bankmanagementsystem.user.service;
 
 
+import com.hexaware.bankmanagementsystem.user.exceptionhandler.UserNotFoundException;
 import com.hexaware.bankmanagementsystem.user.model.User;
 import com.hexaware.bankmanagementsystem.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,10 @@ public class UserService {
             com.hexaware.bankmanagementsystem.user.entity.User userEntity = optionalUser.get();
             return new User(userEntity);
         }
-        return null;
+        else {
+            throw new UserNotFoundException("User not found: " +id);
+        }
+        //return null;
     }
 
     public User updateUserById(Integer id, User user) {
@@ -52,7 +56,10 @@ public class UserService {
             return new User(userEntity);
 
         }
-        return null;
+        else {
+            throw new UserNotFoundException("User not found: " +id);
+        }
+        //return null;
     }
 
     public void deleteUserById(Integer id) {
@@ -61,5 +68,9 @@ public class UserService {
             com.hexaware.bankmanagementsystem.user.entity.User userEntity = optionalUser.get();
             userRepository.delete(userEntity);
         }
+        else {
+            throw new UserNotFoundException("User not found: " +id);
+        }
+
     }
 }
