@@ -1,8 +1,8 @@
-package com.hexaware.beneficiary.service;
+package com.hexaware.bankmanagementsystem.service;
 
-import com.hexaware.beneficiary.entity.BeneficiaryEntity;
-import com.hexaware.beneficiary.model.Beneficiary;
-import com.hexaware.beneficiary.repository.BeneficiaryRepository;
+import com.hexaware.bankmanagementsystem.entity.BeneficiaryEntity;
+import com.hexaware.bankmanagementsystem.model.Beneficiary;
+import com.hexaware.bankmanagementsystem.repository.BeneficiaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package com.hexaware.beneficiary.controller;
+package com.hexaware.bankmanagementsystem.controller;
 
-import com.hexaware.beneficiary.model.Beneficiary;
-import com.hexaware.beneficiary.service.BeneficiaryService;
+import com.hexaware.bankmanagementsystem.model.Beneficiary;
+import com.hexaware.bankmanagementsystem.service.BeneficiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

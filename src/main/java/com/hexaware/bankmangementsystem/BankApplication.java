@@ -1,13 +1,11 @@
-package com.hexaware.beneficiary;
+package com.hexaware.bankmanagementsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Beneficiary {
-
+public class BankApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(Beneficiary.class, args);
+		SpringApplication.run(com.hexaware.bankmanagementsystem.BankApplication.class, args);
 	}
-
 }

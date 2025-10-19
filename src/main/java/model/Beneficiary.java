@@ -1,4 +1,4 @@
-package com.hexaware.beneficiary.model;
+package com.hexaware.bankmanagementsystem.model;
 
 public class Beneficiary {
     private Long id;
