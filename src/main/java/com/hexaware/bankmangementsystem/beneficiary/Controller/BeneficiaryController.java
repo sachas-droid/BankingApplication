@@ -1,4 +1,4 @@
-package com.hexaware.bankmanagementsystem.controller;
+package Controller;
 
 import com.hexaware.bankmanagementsystem.model.Beneficiary;
 import com.hexaware.bankmanagementsystem.service.BeneficiaryService;
@@ -24,7 +24,7 @@ public class BeneficiaryController {
         return ResponseEntity.ok(beneficiaryService.getAll());
     }
 
-    // GET beneficiary by ID
+    // GET com.hexaware.bankmangementsystem.beneficiary by ID
     @GetMapping("/{id}")
     public ResponseEntity<Object> getById(@PathVariable Long id) {
         Optional<Beneficiary> beneficiary = beneficiaryService.getById(id);
@@ -34,7 +34,7 @@ public class BeneficiaryController {
                         .body(Map.of("error", "Beneficiary not found")));
     }
 
-    // POST create new beneficiary
+    // POST create new com.hexaware.bankmangementsystem.beneficiary
     @PostMapping
     public ResponseEntity<Beneficiary> create(@RequestBody Beneficiary model) {
         Beneficiary created = beneficiaryService.create(model);

@@ -16,7 +16,7 @@ public class BeneficiaryService {
     @Autowired
     private BeneficiaryRepository repository;
 
-    //  Create new beneficiary
+    //  Create new com.hexaware.bankmangementsystem.beneficiary
     public Beneficiary create(Beneficiary model) {
         BeneficiaryEntity entity = toEntity(model);
         BeneficiaryEntity saved = repository.save(entity);
@@ -31,13 +31,13 @@ public class BeneficiaryService {
                 .collect(Collectors.toList());
     }
 
-    //  Get beneficiary by ID
+    //  Get com.hexaware.bankmangementsystem.beneficiary by ID
     public Optional<Beneficiary> getById(Long id) {
         return repository.findById(id)
                 .map(this::toModel);
     }
 
-    //  Update beneficiary by ID
+    //  Update com.hexaware.bankmangementsystem.beneficiary by ID
     public Optional<Beneficiary> update(Long id, Beneficiary model) {
         return repository.findById(id).map(existing -> {
             existing.setName(model.getName());
@@ -48,7 +48,7 @@ public class BeneficiaryService {
         });
     }
 
-    //  Delete beneficiary by ID
+    //  Delete com.hexaware.bankmangementsystem.beneficiary by ID
     public void delete(Long id) {
         repository.deleteById(id);
     }
