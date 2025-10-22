@@ -1,4 +1,4 @@
-package com.hexaware.bankmanagementsystem.entity;
+package com.hexaware.bankmangementsystem.beneficiary.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

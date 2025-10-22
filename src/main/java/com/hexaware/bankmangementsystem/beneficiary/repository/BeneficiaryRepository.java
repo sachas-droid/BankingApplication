@@ -1,6 +1,6 @@
-package com.hexaware.bankmanagementsystem.repository;
+package com.hexaware.bankmangementsystem.beneficiary.repository;
 
-import com.hexaware.bankmanagementsystem.entity.BeneficiaryEntity;
+import com.hexaware.bankmangementsystem.beneficiary.entity.BeneficiaryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

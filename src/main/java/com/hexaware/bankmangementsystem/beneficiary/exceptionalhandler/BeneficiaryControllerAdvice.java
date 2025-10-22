@@ -1,4 +1,4 @@
-package com.hexaware.bankmanagementsystem.exceptionhandler;
+package com.hexaware.bankmangementsystem.beneficiary.exceptionalhandler;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;

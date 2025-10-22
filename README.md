@@ -23,9 +23,9 @@ This module handles the **CRUD operations** for banking beneficiaries as part of
 
 Method  Endpoint                             Description
 GET     api/v1/accounts/beneficiaries        Get list of beneficiaries
-GET     api/v1/accounts/beneficiaries/{id}   Get a single beneficiary by ID
-POST    api/v1/accounts/beneficiaries        Create a new beneficiary
-PUT     api/v1/accounts/beneficiaries/{id}   Update a beneficiary by ID
-DELETE  api/v1/accounts/beneficiaries/{id}   Delete a beneficiary by ID
+GET     api/v1/accounts/beneficiaries/{id}   Get a single com.hexaware.bankmangementsystem.beneficiary by ID
+POST    api/v1/accounts/beneficiaries        Create a new com.hexaware.bankmangementsystem.beneficiary
+PUT     api/v1/accounts/beneficiaries/{id}   Update a com.hexaware.bankmangementsystem.beneficiary by ID
+DELETE  api/v1/accounts/beneficiaries/{id}   Delete a com.hexaware.bankmangementsystem.beneficiary by ID
 
 
